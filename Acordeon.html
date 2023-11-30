@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="acordeon" id="acordeon">
+
+      <h1>Acordeon</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+        Integer vitae mauris in tortor vulputate rhoncus. <br />
+        Fusce varius pretium aliquam. <br />
+        Nulla sapien erat, pharetra in ullamcorper sed,<br />
+        pulputate id tortor
+      </p>
+
+      <h1>Acordeon2</h1>
+      <p>
+        Nulla at auctor mauris. In venenatis odio quis tincidunt volutpat.
+        <br />
+        Orci varius natoque penatibus et magnis dis parturient montes,
+      </p>
+
+      <h1>Acordeon3</h1>
+      <p>
+        Integer sit amet augue eget mi vestibulum fringilla congue vel est.
+        <br />
+        Sed fermentum lorem a lectus euismod, a interdum nisl aliquet.
+      </p>
+    </div>
+    <script>
+      const div = document.querySelector("div");
+      const parrafos = document.querySelectorAll("#acordeon p");
+
+      parrafos.forEach((p) => {
+        p.style.display = "none";
+      });
+
+      div.addEventListener("click", () => {
+        parrafos.forEach((p) => {
+          p.style.display = "none";
+        });
+      });
+
+      parrafos.forEach((p) => {
+        p.style.display = "block";
+      });
+
+      div.addEventListener("click", () => {
+        parrafos.forEach((p) => {
+          p.style.display = "block";
+        });
+      });
+
+      const titulos = document.querySelectorAll("#acordeon h1");
+      titulos.forEach((titulo) => {
+        titulo.addEventListener("click", () => {
+          const parrafo = titulo.nextElementSibling;
+          parrafo.style.display =
+            parrafo.style.display === "none" ? "block" : "none";
+
+      const titulos = document.querySelectorAll("#acordeon h1");
+      titulos.forEach((titulo) => {
+        titulo.addEventListener("click", () => {
+          const parrafo = titulo.nextElementSibling;
+          const parrafos = document.querySelectorAll("#acordeon p");
+
+          parrafos.forEach((p) => {
+            if (p !== parrafo) {
+              p.style.display = "none";
+            }
+          });
+          parrafo.style.display =
+            parrafo.style.display === "none" ? "block" : "none";
+        });
+      });
+    });
+  });
+    </script>
+  </body>
+</html>
