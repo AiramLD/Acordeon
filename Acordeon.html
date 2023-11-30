@@ -64,10 +64,6 @@
         const paragraphs = accordion.querySelectorAll("p");
         paragraphs.forEach((p) => p.classList.add("hide"));
       }
-
-      paragraphs.forEach((p) => p.classList.add("hide"));
-
-
       function deploy(event) {
         const header = event.target;
         const paragraph = header.nextElementSibling;
@@ -77,7 +73,7 @@
       }
 
       function makeAccordion(accordion) {
-        const headers = accordion1.querySelectorAll("h1");
+        const headers = accordion.querySelectorAll("h1");
         hideAll(accordion);
         headers.forEach((h) => h.addEventListener("click", deploy));
         
