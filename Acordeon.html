@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .hide {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <div class="acordeon" id="acordeon">
-
+    <div class="accordion">
       <h1>Acordeon</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
@@ -31,54 +35,56 @@
         Sed fermentum lorem a lectus euismod, a interdum nisl aliquet.
       </p>
     </div>
+    <h1>Acordeon</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+      Integer vitae mauris in tortor vulputate rhoncus. <br />
+      Fusce varius pretium aliquam. <br />
+      Nulla sapien erat,  in ullamcorper sed,<br />
+      pulputate id tortor
+    </p>
+
+    <h1>Acordeon2</h1>
+    <p>
+      Nulla at auctor mauris. In venenatis odio quis tincidunt volutpat.
+      <br />
+      Orci varius natoque  et magnis dis parturient montes,
+    </p>
+
+    <h1>Acordeon3</h1>
+    <p>
+      Integer sit amet  eget mi vestibulum fringilla congue vel est.
+      <br />
+      Sed fermentum lorem a lectus euismod, a interdum nisl aliquet.
+    </p>
+  </div>
     <script>
-      const div = document.querySelector("div");
-      const parrafos = document.querySelectorAll("#acordeon p");
+      // Acordeon
+      function hideAll(accordion) {
+        const paragraphs = accordion.querySelectorAll("p");
+        paragraphs.forEach((p) => p.classList.add("hide"));
+      }
 
-      parrafos.forEach((p) => {
-        p.style.display = "none";
-      });
+      paragraphs.forEach((p) => p.classList.add("hide"));
 
-      div.addEventListener("click", () => {
-        parrafos.forEach((p) => {
-          p.style.display = "none";
-        });
-      });
 
-      parrafos.forEach((p) => {
-        p.style.display = "block";
-      });
+      function deploy(event) {
+        const header = event.target;
+        const paragraph = header.nextElementSibling;
+        const accordion = header.parentElement;
+        hideAll(accordion);
+        paragraph.classList.remove("hide");
+      }
 
-      div.addEventListener("click", () => {
-        parrafos.forEach((p) => {
-          p.style.display = "block";
-        });
-      });
-
-      const titulos = document.querySelectorAll("#acordeon h1");
-      titulos.forEach((titulo) => {
-        titulo.addEventListener("click", () => {
-          const parrafo = titulo.nextElementSibling;
-          parrafo.style.display =
-            parrafo.style.display === "none" ? "block" : "none";
-
-      const titulos = document.querySelectorAll("#acordeon h1");
-      titulos.forEach((titulo) => {
-        titulo.addEventListener("click", () => {
-          const parrafo = titulo.nextElementSibling;
-          const parrafos = document.querySelectorAll("#acordeon p");
-
-          parrafos.forEach((p) => {
-            if (p !== parrafo) {
-              p.style.display = "none";
-            }
-          });
-          parrafo.style.display =
-            parrafo.style.display === "none" ? "block" : "none";
-        });
-      });
-    });
-  });
+      function makeAccordion(accordion) {
+        const headers = accordion1.querySelectorAll("h1");
+        hideAll(accordion);
+        headers.forEach((h) => h.addEventListener("click", deploy));
+        
+      }
+      const accordions = document.querySelectorAll(".accordion");
+      accordions.forEach(accordion => makeAccordion(accordion));
+    
     </script>
   </body>
 </html>
